@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "EffectHandlers"
 include ':app'
+include ':effects_lib'
+include ':effect_handlers_lib'
