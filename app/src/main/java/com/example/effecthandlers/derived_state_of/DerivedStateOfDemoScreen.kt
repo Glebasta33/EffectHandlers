@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun DerivedStateOfDemoScreen() {
+internal fun DerivedStateOfDemoScreen() {
     Column {
         Text(
             text = "derivedStateOf: convert one or multiple state objects into another state. \nUsing this function guarantees that the calculation will only occur whenever one of the states used in the derivedStateOf{} changes.",

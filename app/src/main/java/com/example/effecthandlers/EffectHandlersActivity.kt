@@ -1,5 +1,7 @@
 package com.example.effecthandlers
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -31,7 +33,7 @@ import com.example.effecthandlers.side_effect.SideEffectDemoScreen
 import com.example.effecthandlers.snapshot_flow.SnapshotFlowDemoScreen
 import com.example.effecthandlers.ui.theme.EffectHandlersTheme
 
-class MainActivity : ComponentActivity() {
+class EffectHandlersActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -98,11 +100,13 @@ class MainActivity : ComponentActivity() {
 
     companion object {
         private const val EFFECT_HANDLERS_TITLE = "Effect Handlers"
+
+        fun openScreen(context: Context) = context.startActivity(Intent(context, EffectHandlersActivity::class.java))
     }
 }
 
 @Composable
-fun EffectsList(
+internal fun EffectsList(
     screens: List<EffectHandlerScreen>,
     navigationState: NavigationState,
     onClick: (String) -> Unit
@@ -120,7 +124,7 @@ fun EffectsList(
 }
 
 @Composable
-fun EffectListItem(name: String, onClick: () -> Unit) {
+private fun EffectListItem(name: String, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()

@@ -13,7 +13,7 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 
 @Composable
-fun DisposableEffectDemoScreen(
+internal fun DisposableEffectDemoScreen(
     lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current
 ) {
     var eventName by remember { mutableStateOf("") }

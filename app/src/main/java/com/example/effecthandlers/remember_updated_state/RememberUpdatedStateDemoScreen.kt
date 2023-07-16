@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 
 @Composable
-fun RememberCalculation(operation: () -> Unit) {
+private fun RememberCalculation(operation: () -> Unit) {
     val firstlyRememberedOperation = remember { operation }
 
     var progress by remember { mutableStateOf(0.0f) }
@@ -43,7 +43,7 @@ fun RememberCalculation(operation: () -> Unit) {
 }
 
 @Composable
-fun RememberUpdatedStateCalculation(operation: () -> Unit) {
+private fun RememberUpdatedStateCalculation(operation: () -> Unit) {
     val updatedOperation by rememberUpdatedState(newValue = operation)
 
     var progress by remember { mutableStateOf(0.0f) }
@@ -69,7 +69,7 @@ fun RememberUpdatedStateCalculation(operation: () -> Unit) {
 }
 
 @Composable
-fun RememberUpdatedStateDemoScreen() {
+internal fun RememberUpdatedStateDemoScreen() {
 
     var showCalculation by remember { mutableStateOf(false) }
     var showCalculation2 by remember { mutableStateOf(false) }

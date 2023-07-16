@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 
 @Composable
-fun LaunchedEffectDemoScreen() {
+internal fun LaunchedEffectDemoScreen() {
     var key by remember { mutableStateOf(1) }
 
     Column(

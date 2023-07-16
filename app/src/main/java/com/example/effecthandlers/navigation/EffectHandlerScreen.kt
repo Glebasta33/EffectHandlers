@@ -1,6 +1,6 @@
 package com.example.effecthandlers.navigation
 
-sealed class EffectHandlerScreen(
+internal sealed class EffectHandlerScreen(
     val route: String
 ) {
 

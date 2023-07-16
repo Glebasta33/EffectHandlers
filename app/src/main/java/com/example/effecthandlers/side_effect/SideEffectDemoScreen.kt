@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SideEffectDemoScreen() {
+internal fun SideEffectDemoScreen() {
 
     var text by remember { mutableStateOf("") }
 
@@ -54,7 +54,7 @@ fun SideEffectDemoScreen() {
 }
 
 @Composable
-fun LaunchedEffectedItem(
+private fun LaunchedEffectedItem(
     itemIndex: Int,
     loggingText: (String) -> Unit
 ) {

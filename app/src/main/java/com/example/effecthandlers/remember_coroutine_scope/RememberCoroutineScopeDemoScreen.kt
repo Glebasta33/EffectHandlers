@@ -12,7 +12,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
-fun RememberCoroutineScopeDemoScreen() {
+internal fun RememberCoroutineScopeDemoScreen() {
 
     Column(
         modifier = Modifier
@@ -38,7 +38,7 @@ fun RememberCoroutineScopeDemoScreen() {
 }
 
 @Composable
-fun LaunchedEffectedItem() {
+private fun LaunchedEffectedItem() {
     val scope = rememberCoroutineScope()
     var progress by remember { mutableStateOf(0.0f) }
     val animatedProgress = animateFloatAsState(

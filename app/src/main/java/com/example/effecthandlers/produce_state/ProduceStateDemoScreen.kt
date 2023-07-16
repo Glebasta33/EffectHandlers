@@ -19,7 +19,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
-fun ProduceStateDemoScreen() {
+internal fun ProduceStateDemoScreen() {
 
     var isLinkValid by remember { mutableStateOf(false) }
 

@@ -14,7 +14,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
-fun SnapshotFlowDemoScreen() {
+internal fun SnapshotFlowDemoScreen() {
 
     Column(
         modifier = Modifier
@@ -34,7 +34,7 @@ fun SnapshotFlowDemoScreen() {
 }
 
 @Composable
-fun Example() {
+private fun Example() {
     var a by remember { mutableStateOf(0) }
     var b by remember { mutableStateOf(0) }
     var sum by remember { mutableStateOf(0) }

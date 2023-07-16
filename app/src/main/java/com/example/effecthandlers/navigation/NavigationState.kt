@@ -8,7 +8,7 @@ import androidx.navigation.compose.rememberNavController
 /**
  * Стейт холдер-обёртка над [NavHostController] с доп. настройками
  */
-class NavigationState(
+internal class NavigationState(
     val navHostController: NavHostController
 ) {
     fun navigateTo(route: String) {
@@ -20,7 +20,7 @@ class NavigationState(
 }
 
 @Composable
-fun rememberNavigationState(
+internal fun rememberNavigationState(
     navHostController: NavHostController = rememberNavController()
 ): NavigationState {
     return remember {
