@@ -11,9 +11,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.gltrusov.effects_lib.R
+import com.gltrusov.effects_lib.utils.HyperlinkText
+import com.gltrusov.effects_lib.utils.createLinkToFileFunction
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -22,6 +25,12 @@ import kotlinx.coroutines.launch
 internal fun ProduceStateDemoScreen() {
 
     var isLinkValid by remember { mutableStateOf(false) }
+
+    val newLink = createLinkToFileFunction(
+        context = LocalContext.current,
+        pack = object {}::class.java.`package`,
+        method = object {}::class.java.enclosingMethod
+    ).replace("app", "effects_lib")
 
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
         Text(
@@ -68,6 +77,13 @@ internal fun ProduceStateDemoScreen() {
             }
 
             Spacer(modifier = Modifier.height(200.dp))
+
+            HyperlinkText(
+                linkText = newLink,
+                modifier = Modifier
+                    .align(Alignment.End)
+                    .padding(end = 4.dp, bottom = 2.dp)
+            )
         }
     }
 

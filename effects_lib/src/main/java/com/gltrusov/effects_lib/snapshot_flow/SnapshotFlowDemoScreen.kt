@@ -8,28 +8,44 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.gltrusov.effects_lib.utils.HyperlinkText
+import com.gltrusov.effects_lib.utils.createLinkToFileFunction
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
 internal fun SnapshotFlowDemoScreen() {
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        Text(
-            text = "snapshotFlow: convert Compose's State into Flows. \nWhen one of the State objects read inside the snapshotFlow block mutates, the Flow will emit the new value to its collector.",
-            modifier = Modifier
-                .padding(10.dp)
-                .fillMaxWidth(),
-            color = MaterialTheme.colors.secondary
-        )
-        Spacer(modifier = Modifier.height(100.dp))
-        Example()
+    val newLink = createLinkToFileFunction(
+        context = LocalContext.current,
+        pack = object {}::class.java.`package`,
+        method = object {}::class.java.enclosingMethod
+    ).replace("app", "effects_lib")
 
+    Box {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            Text(
+                text = "snapshotFlow: convert Compose's State into Flows. \nWhen one of the State objects read inside the snapshotFlow block mutates, the Flow will emit the new value to its collector.",
+                modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxWidth(),
+                color = MaterialTheme.colors.secondary
+            )
+            Spacer(modifier = Modifier.height(100.dp))
+            Example()
+        }
+        HyperlinkText(
+            linkText = newLink,
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(end = 4.dp, bottom = 2.dp)
+        )
     }
 }
 

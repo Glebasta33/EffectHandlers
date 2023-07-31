@@ -8,12 +8,21 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.gltrusov.effects_lib.utils.HyperlinkText
+import com.gltrusov.effects_lib.utils.createLinkToFileFunction
 
 @Composable
 internal fun SideEffectDemoScreen() {
+
+    val newLink = createLinkToFileFunction(
+        context = LocalContext.current,
+        pack = object {}::class.java.`package`,
+        method = object {}::class.java.enclosingMethod
+    ).replace("app", "effects_lib")
 
     var text by remember { mutableStateOf("") }
 
@@ -50,6 +59,13 @@ internal fun SideEffectDemoScreen() {
                 }
             }
         }
+
+        HyperlinkText(
+            linkText = newLink,
+            modifier = Modifier
+                .align(Alignment.End)
+                .padding(end = 4.dp, bottom = 2.dp)
+        )
     }
 }
 

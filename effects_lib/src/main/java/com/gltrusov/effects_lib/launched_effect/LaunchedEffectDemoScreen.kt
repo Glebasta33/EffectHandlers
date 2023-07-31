@@ -7,60 +7,76 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.gltrusov.effects_lib.utils.HyperlinkText
+import com.gltrusov.effects_lib.utils.createLinkToFileFunction
 import kotlinx.coroutines.delay
 
 @Composable
 internal fun LaunchedEffectDemoScreen() {
     var key by remember { mutableStateOf(1) }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        Text(
-            text = "When LaunchedEffect enters the Composition, it launches a coroutine. \nThe coroutine will be cancelled if LaunchedEffect leaves the composition.",
-            modifier = Modifier
-                .padding(10.dp)
-                .fillMaxWidth()
-                .weight(0.8f),
-            color = MaterialTheme.colors.secondary
-        )
+    val newLink = createLinkToFileFunction(
+        context = LocalContext.current,
+        pack = object {}::class.java.`package`,
+        method = object {}::class.java.enclosingMethod
+    ).replace("app", "effects_lib")
 
-        LazyColumn(
-            modifier = Modifier.weight(5f)
-        ) {
-            repeat(7) {
-                item { LaunchedEffectedItem(key) }
-            }
-        }
-
-        Row(
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically,
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(
             modifier = Modifier
-                .padding(10.dp)
-                .weight(1f)
+                .fillMaxSize()
         ) {
             Text(
-                text = "If LaunchedEffect is recomposed with different keys, the existing coroutine will be cancelled and the new suspend function will be launched in a new coroutine",
+                text = "When1 LaunchedEffect enters the Composition, it launches a coroutine. \nThe coroutine will be cancelled if LaunchedEffect leaves the composition.",
                 modifier = Modifier
-                    .weight(2f)
-                    .padding(2.dp),
+                    .padding(10.dp)
+                    .fillMaxWidth()
+                    .weight(0.8f),
                 color = MaterialTheme.colors.secondary
             )
-            Button(
-                onClick = { key += 1 },
+
+            LazyColumn(
+                modifier = Modifier.weight(5f)
+            ) {
+                repeat(7) {
+                    item { LaunchedEffectedItem(key) }
+                }
+            }
+
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
+                    .padding(10.dp)
                     .weight(1f)
-                    .padding(2.dp)
             ) {
                 Text(
-                    text = "Increase key"
+                    text = "If LaunchedEffect is recomposed with different keys, the existing coroutine will be cancelled and the new suspend function will be launched in a new coroutine",
+                    modifier = Modifier
+                        .weight(2f)
+                        .padding(2.dp),
+                    color = MaterialTheme.colors.secondary
                 )
+                Button(
+                    onClick = { key += 1 },
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(2.dp)
+                ) {
+                    Text(
+                        text = "Increase key"
+                    )
+                }
             }
+            HyperlinkText(
+                linkText = newLink,
+                modifier = Modifier
+                    .align(Alignment.End)
+                    .padding(end = 4.dp, bottom = 2.dp)
+            )
         }
-
     }
 }
 
