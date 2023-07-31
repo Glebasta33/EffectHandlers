@@ -48,7 +48,7 @@ internal fun DerivedStateOfDemoScreen() {
 fun CountDisplay(count: State<Int>) {
     Text("a + b = ${count.value}", fontSize = 36.sp, modifier = Modifier.padding(50.dp))
 }
-
+//Тестовый коммит с телефона
 @Composable
 fun Example() {
     var a by remember { mutableStateOf(0) }
