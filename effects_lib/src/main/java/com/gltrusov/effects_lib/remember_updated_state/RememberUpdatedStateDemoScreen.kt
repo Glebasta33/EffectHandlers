@@ -107,7 +107,7 @@ internal fun RememberUpdatedStateDemoScreen() {
                 .fillMaxSize()
         ) {
             Text(
-                text = "In some situations you might want to capture a value in your effect that, if it changes, you do not want the effect to restart. \n To make sure that the lambda always contains the latest value, lambda needs to be wrapped with the rememberUpdatedState.",
+                text = "In some situations you might want to capture a value in your effect that, if it changes, you do not want the effect to restart. \n To make sure that the lambda always contains the latest value, lambda needs to be wrapped with the rememberUpdatedState. \n Эффекты могут использовать значение (state) из remember в своей работе. Если нужно обновить это значение в процессе выполнения эффекта, используй rememberUpdatedState",
                 modifier = Modifier
                     .padding(10.dp)
                     .fillMaxWidth(),
